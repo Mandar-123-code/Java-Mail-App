@@ -1,0 +1,11 @@
+com\javamail\dao\MailDAO.class
+com\javamail\dao\UserDAO.class
+com\javamail\servlet\MailServlet.class
+com\javamail\util\DBConnection.class
+com\javamail\servlet\UserServlet.class
+com\javamail\util\AppLifecycleListener.class
+com\javamail\model\Mail.class
+com\javamail\model\User.class
+com\javamail\util\PasswordUtil.class
+com\javamail\model\Mail$Status.class
+com\javamail\model\Attachment.class

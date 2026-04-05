@@ -1,0 +1,288 @@
+02-Apr-2026 19:17:41.711 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.31
+02-Apr-2026 19:17:41.720 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 3 2024 19:02:38 UTC
+02-Apr-2026 19:17:41.720 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.31.0
+02-Apr-2026 19:17:41.720 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+02-Apr-2026 19:17:41.721 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+02-Apr-2026 19:17:41.721 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+02-Apr-2026 19:17:41.722 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-17
+02-Apr-2026 19:17:41.722 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.12+8-LTS-286
+02-Apr-2026 19:17:41.722 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+02-Apr-2026 19:17:41.722 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:17:41.722 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:17:41.860 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\conf\logging.properties
+02-Apr-2026 19:17:41.860 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Apr-2026 19:17:41.860 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+02-Apr-2026 19:17:41.860 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+02-Apr-2026 19:17:41.860 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Apr-2026 19:17:41.861 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+02-Apr-2026 19:17:41.861 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+02-Apr-2026 19:17:41.861 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+02-Apr-2026 19:17:41.861 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Apr-2026 19:17:41.862 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:17:41.862 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:17:41.862 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\temp
+02-Apr-2026 19:17:41.918 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.8] using APR version [1.7.4].
+02-Apr-2026 19:17:41.926 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+02-Apr-2026 19:17:42.275 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+02-Apr-2026 19:17:42.323 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [870] milliseconds
+02-Apr-2026 19:17:42.413 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+02-Apr-2026 19:17:42.413 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.31]
+02-Apr-2026 19:17:42.455 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war]
+02-Apr-2026 19:17:44.895 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-Apr-2026 19:17:45.140 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war] has finished in [2,685] ms
+02-Apr-2026 19:17:45.142 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\docs]
+02-Apr-2026 19:17:45.213 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\docs] has finished in [70] ms
+02-Apr-2026 19:17:45.213 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\examples]
+02-Apr-2026 19:17:46.079 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\examples] has finished in [865] ms
+02-Apr-2026 19:17:46.079 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\host-manager]
+02-Apr-2026 19:17:46.157 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\host-manager] has finished in [78] ms
+02-Apr-2026 19:17:46.158 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\manager]
+02-Apr-2026 19:17:46.227 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\manager] has finished in [70] ms
+02-Apr-2026 19:17:46.228 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\ROOT]
+02-Apr-2026 19:17:46.279 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\ROOT] has finished in [50] ms
+02-Apr-2026 19:17:46.285 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+02-Apr-2026 19:17:46.364 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [4040] milliseconds
+02-Apr-2026 19:20:26.553 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/JavaMailApp]
+02-Apr-2026 19:20:26.561 WARNING [Catalina-utility-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [JavaMailApp] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+02-Apr-2026 19:20:26.564 WARNING [Catalina-utility-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [JavaMailApp] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.12/java.lang.Object.wait(Native Method)
+ java.base@17.0.12/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+ java.base@17.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.12/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:20:26.632 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war]
+02-Apr-2026 19:20:28.110 INFO [Catalina-utility-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-Apr-2026 19:20:28.163 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war] has finished in [1,532] ms
+02-Apr-2026 19:20:29.223 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1352)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:950)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:125)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:92)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:20:39.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.31
+02-Apr-2026 19:20:39.679 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 3 2024 19:02:38 UTC
+02-Apr-2026 19:20:39.681 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.31.0
+02-Apr-2026 19:20:39.681 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+02-Apr-2026 19:20:39.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+02-Apr-2026 19:20:39.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+02-Apr-2026 19:20:39.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-17
+02-Apr-2026 19:20:39.682 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.12+8-LTS-286
+02-Apr-2026 19:20:39.683 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+02-Apr-2026 19:20:39.683 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:20:39.683 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:20:39.697 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\conf\logging.properties
+02-Apr-2026 19:20:39.697 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Apr-2026 19:20:39.698 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+02-Apr-2026 19:20:39.698 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+02-Apr-2026 19:20:39.698 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Apr-2026 19:20:39.698 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+02-Apr-2026 19:20:39.698 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+02-Apr-2026 19:20:39.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+02-Apr-2026 19:20:39.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Apr-2026 19:20:39.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:20:39.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:20:39.699 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\temp
+02-Apr-2026 19:20:39.704 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.8] using APR version [1.7.4].
+02-Apr-2026 19:20:39.715 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+02-Apr-2026 19:20:40.043 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+02-Apr-2026 19:20:40.073 SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to initialize component [Connector["http-nio-8080"]]
+	org.apache.catalina.LifecycleException: Protocol handler initialization failed
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1030)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:525)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:957)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:708)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:731)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:302)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+	Caused by: java.net.BindException: Address already in use: bind
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:555)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:239)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:194)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1304)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1317)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:633)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:79)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1028)
+		... 13 more
+02-Apr-2026 19:20:40.076 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [644] milliseconds
+02-Apr-2026 19:20:40.153 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+02-Apr-2026 19:20:40.153 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.31]
+02-Apr-2026 19:20:40.180 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war]
+02-Apr-2026 19:20:42.047 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-Apr-2026 19:20:42.252 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war] has finished in [2,070] ms
+02-Apr-2026 19:20:42.253 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\docs]
+02-Apr-2026 19:20:42.311 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\docs] has finished in [58] ms
+02-Apr-2026 19:20:42.312 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\examples]
+02-Apr-2026 19:20:42.986 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\examples] has finished in [674] ms
+02-Apr-2026 19:20:42.987 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\host-manager]
+02-Apr-2026 19:20:43.046 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\host-manager] has finished in [59] ms
+02-Apr-2026 19:20:43.047 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\manager]
+02-Apr-2026 19:20:43.105 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\manager] has finished in [57] ms
+02-Apr-2026 19:20:43.105 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\ROOT]
+02-Apr-2026 19:20:43.146 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\ROOT] has finished in [41] ms
+02-Apr-2026 19:20:43.153 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [3077] milliseconds
+02-Apr-2026 19:20:43.161 SEVERE [main] org.apache.catalina.core.StandardServer.await Failed to create server shutdown socket on address [localhost] and port [8005] (base port [8005] and offset [0])
+	java.net.BindException: Address already in use: bind
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:555)
+		at java.base/sun.nio.ch.Net.bind(Net.java:544)
+		at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:648)
+		at java.base/java.net.ServerSocket.bind(ServerSocket.java:388)
+		at java.base/java.net.ServerSocket.<init>(ServerSocket.java:274)
+		at org.apache.catalina.core.StandardServer.await(StandardServer.java:533)
+		at org.apache.catalina.startup.Catalina.await(Catalina.java:847)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:795)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+02-Apr-2026 19:20:43.162 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+02-Apr-2026 19:20:43.162 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+02-Apr-2026 19:20:43.190 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+02-Apr-2026 19:20:43.193 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+02-Apr-2026 19:22:08.331 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/JavaMailApp]
+02-Apr-2026 19:22:08.334 WARNING [Catalina-utility-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [JavaMailApp] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+02-Apr-2026 19:22:08.334 WARNING [Catalina-utility-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [JavaMailApp] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.12/java.lang.Object.wait(Native Method)
+ java.base@17.0.12/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+ java.base@17.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.12/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:22:08.384 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war]
+02-Apr-2026 19:22:08.565 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1352)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:950)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:125)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:92)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:22:09.640 INFO [Catalina-utility-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-Apr-2026 19:22:09.687 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war] has finished in [1,303] ms
+02-Apr-2026 19:22:28.374 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.31
+02-Apr-2026 19:22:28.379 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 3 2024 19:02:38 UTC
+02-Apr-2026 19:22:28.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.31.0
+02-Apr-2026 19:22:28.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+02-Apr-2026 19:22:28.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+02-Apr-2026 19:22:28.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+02-Apr-2026 19:22:28.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-17
+02-Apr-2026 19:22:28.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.12+8-LTS-286
+02-Apr-2026 19:22:28.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+02-Apr-2026 19:22:28.381 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:22:28.382 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:22:28.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\conf\logging.properties
+02-Apr-2026 19:22:28.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Apr-2026 19:22:28.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+02-Apr-2026 19:22:28.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+02-Apr-2026 19:22:28.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Apr-2026 19:22:28.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+02-Apr-2026 19:22:28.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+02-Apr-2026 19:22:28.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+02-Apr-2026 19:22:28.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Apr-2026 19:22:28.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:22:28.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:22:28.399 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\temp
+02-Apr-2026 19:22:28.403 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.8] using APR version [1.7.4].
+02-Apr-2026 19:22:28.413 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+02-Apr-2026 19:22:28.759 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+02-Apr-2026 19:22:28.811 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [679] milliseconds
+02-Apr-2026 19:22:28.896 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+02-Apr-2026 19:22:28.896 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.31]
+02-Apr-2026 19:22:28.929 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war]
+02-Apr-2026 19:22:30.747 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-Apr-2026 19:22:30.959 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war] has finished in [2,029] ms
+02-Apr-2026 19:22:30.960 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\docs]
+02-Apr-2026 19:22:31.027 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\docs] has finished in [66] ms
+02-Apr-2026 19:22:31.028 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\examples]
+02-Apr-2026 19:22:31.692 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\examples] has finished in [664] ms
+02-Apr-2026 19:22:31.692 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\host-manager]
+02-Apr-2026 19:22:31.753 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\host-manager] has finished in [61] ms
+02-Apr-2026 19:22:31.754 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\manager]
+02-Apr-2026 19:22:31.810 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\manager] has finished in [55] ms
+02-Apr-2026 19:22:31.810 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\ROOT]
+02-Apr-2026 19:22:31.852 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\ROOT] has finished in [41] ms
+02-Apr-2026 19:22:31.857 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+02-Apr-2026 19:22:31.925 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [3113] milliseconds
+02-Apr-2026 19:24:21.996 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/JavaMailApp]
+02-Apr-2026 19:24:22.004 WARNING [Catalina-utility-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [JavaMailApp] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+02-Apr-2026 19:24:22.005 WARNING [Catalina-utility-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [JavaMailApp] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.12/java.lang.Object.wait(Native Method)
+ java.base@17.0.12/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:93)
+ java.base@17.0.12/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.12/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.12/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:24:22.064 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war]
+02-Apr-2026 19:24:23.524 INFO [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-Apr-2026 19:24:23.593 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war] has finished in [1,528] ms
+02-Apr-2026 19:24:26.938 INFO [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1352)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:950)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:125)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:92)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:24:43.316 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/10.1.31
+02-Apr-2026 19:24:43.324 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 3 2024 19:02:38 UTC
+02-Apr-2026 19:24:43.326 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 10.1.31.0
+02-Apr-2026 19:24:43.326 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 11
+02-Apr-2026 19:24:43.327 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+02-Apr-2026 19:24:43.327 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+02-Apr-2026 19:24:43.328 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk-17
+02-Apr-2026 19:24:43.329 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           17.0.12+8-LTS-286
+02-Apr-2026 19:24:43.329 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+02-Apr-2026 19:24:43.329 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:24:43.330 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:24:43.349 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\conf\logging.properties
+02-Apr-2026 19:24:43.350 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Apr-2026 19:24:43.350 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+02-Apr-2026 19:24:43.350 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+02-Apr-2026 19:24:43.350 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Apr-2026 19:24:43.351 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+02-Apr-2026 19:24:43.351 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+02-Apr-2026 19:24:43.351 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+02-Apr-2026 19:24:43.352 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Apr-2026 19:24:43.352 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:24:43.352 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home
+02-Apr-2026 19:24:43.353 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\temp
+02-Apr-2026 19:24:43.358 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [2.0.8] using APR version [1.7.4].
+02-Apr-2026 19:24:43.369 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 3.0.14 4 Jun 2024]
+02-Apr-2026 19:24:43.750 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+02-Apr-2026 19:24:43.792 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [751] milliseconds
+02-Apr-2026 19:24:43.870 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+02-Apr-2026 19:24:43.871 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/10.1.31]
+02-Apr-2026 19:24:43.901 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war]
+02-Apr-2026 19:24:45.825 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+02-Apr-2026 19:24:46.021 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\JavaMailApp.war] has finished in [2,119] ms
+02-Apr-2026 19:24:46.022 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\docs]
+02-Apr-2026 19:24:46.086 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\docs] has finished in [63] ms
+02-Apr-2026 19:24:46.086 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\examples]
+02-Apr-2026 19:24:46.823 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\examples] has finished in [736] ms
+02-Apr-2026 19:24:46.823 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\host-manager]
+02-Apr-2026 19:24:46.886 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\host-manager] has finished in [63] ms
+02-Apr-2026 19:24:46.887 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\manager]
+02-Apr-2026 19:24:46.943 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\manager] has finished in [57] ms
+02-Apr-2026 19:24:46.943 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\ROOT]
+02-Apr-2026 19:24:46.983 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\Users\kulka\OneDrive\Documents\JavaMailProject\JavaMailProject\.tomcat-home\webapps\ROOT] has finished in [40] ms
+02-Apr-2026 19:24:46.990 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+02-Apr-2026 19:24:47.059 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [3266] milliseconds

@@ -1,0 +1,584 @@
+02-Apr-2026 19:17:46.056 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+02-Apr-2026 19:17:46.056 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+02-Apr-2026 19:17:46.060 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@19b02dfd')
+02-Apr-2026 19:19:49.780 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [com.javamail.servlet.UserServlet] in context with path [/JavaMailApp] threw exception [Database error: Public Key Retrieval is not allowed] with root cause
+	com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+		at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+		at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+		at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+		at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+		at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+		at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+		at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:131)
+		at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:49)
+		at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:446)
+		at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:215)
+		at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1428)
+		at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+		at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+		at com.javamail.util.DBConnection.getConnection(DBConnection.java:29)
+		at com.javamail.dao.UserDAO.login(UserDAO.java:34)
+		at com.javamail.servlet.UserServlet.handleLogin(UserServlet.java:64)
+		at com.javamail.servlet.UserServlet.doPost(UserServlet.java:29)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:20:09.995 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [com.javamail.servlet.UserServlet] in context with path [/JavaMailApp] threw exception [Database error: Public Key Retrieval is not allowed] with root cause
+	com.mysql.cj.exceptions.UnableToConnectException: Public Key Retrieval is not allowed
+		at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+		at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+		at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+		at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+		at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+		at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:85)
+		at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:131)
+		at com.mysql.cj.protocol.a.authentication.CachingSha2PasswordPlugin.nextAuthenticationStep(CachingSha2PasswordPlugin.java:49)
+		at com.mysql.cj.protocol.a.NativeAuthenticationProvider.proceedHandshakeWithPluggableAuthentication(NativeAuthenticationProvider.java:446)
+		at com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:215)
+		at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1428)
+		at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
+		at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+		at com.javamail.util.DBConnection.getConnection(DBConnection.java:29)
+		at com.javamail.dao.UserDAO.login(UserDAO.java:34)
+		at com.javamail.servlet.UserServlet.handleLogin(UserServlet.java:64)
+		at com.javamail.servlet.UserServlet.doPost(UserServlet.java:29)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:20:42.963 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+02-Apr-2026 19:20:42.964 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+02-Apr-2026 19:20:42.968 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@4bb1b96b')
+02-Apr-2026 19:20:43.179 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextDestroyed()
+02-Apr-2026 19:20:43.179 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextDestroyed()
+02-Apr-2026 19:21:13.940 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [com.javamail.servlet.UserServlet] in context with path [/JavaMailApp] threw exception [Database error: Unknown database 'javamail_db'] with root cause
+	java.sql.SQLSyntaxErrorException: Unknown database 'javamail_db'
+		at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+		at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+		at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
+		at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
+		at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+		at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+		at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+		at com.javamail.util.DBConnection.getConnection(DBConnection.java:29)
+		at com.javamail.dao.UserDAO.login(UserDAO.java:34)
+		at com.javamail.servlet.UserServlet.handleLogin(UserServlet.java:64)
+		at com.javamail.servlet.UserServlet.doPost(UserServlet.java:29)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:22:31.673 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+02-Apr-2026 19:22:31.673 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+02-Apr-2026 19:22:31.676 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@664e848c')
+02-Apr-2026 19:23:13.014 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.ApplicationDispatcher.invoke Servlet.service() for servlet [jsp] threw exception
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [13] in the jsp file: [/WEB-INF/mailbox.jsp]
+Switch Expressions are supported from Java 14 onwards only
+10:     int    unread     = (request.getAttribute("unread") instanceof Integer) ? (Integer) request.getAttribute("unread") : 0;
+11:     String ctx        = request.getContextPath();
+12: 
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+
+
+An error occurred at line: [14] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+11:     String ctx        = request.getContextPath();
+12: 
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+
+
+An error occurred at line: [15] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+12: 
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+
+
+An error occurred at line: [16] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+
+
+An error occurred at line: [17] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+
+
+An error occurred at line: [18] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+
+
+An error occurred at line: [19] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+
+
+An error occurred at line: [20] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+23:     };
+
+
+An error occurred at line: [21] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+23:     };
+24: 
+
+
+An error occurred at line: [22] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+23:     };
+24: 
+25:     String success = (String) session.getAttribute("success");
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:81)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:214)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:543)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:402)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:372)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:356)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:632)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:408)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:330)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:267)
+		at com.javamail.servlet.MailServlet.showFolder(MailServlet.java:113)
+		at com.javamail.servlet.MailServlet.doGet(MailServlet.java:58)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:23:13.014 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [com.javamail.servlet.MailServlet] in context with path [/JavaMailApp] threw exception [Unable to compile class for JSP: 
+
+An error occurred at line: [13] in the jsp file: [/WEB-INF/mailbox.jsp]
+Switch Expressions are supported from Java 14 onwards only
+10:     int    unread     = (request.getAttribute("unread") instanceof Integer) ? (Integer) request.getAttribute("unread") : 0;
+11:     String ctx        = request.getContextPath();
+12: 
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+
+
+An error occurred at line: [14] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+11:     String ctx        = request.getContextPath();
+12: 
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+
+
+An error occurred at line: [15] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+12: 
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+
+
+An error occurred at line: [16] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+
+
+An error occurred at line: [17] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+
+
+An error occurred at line: [18] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+
+
+An error occurred at line: [19] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+
+
+An error occurred at line: [20] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+23:     };
+
+
+An error occurred at line: [21] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+23:     };
+24: 
+
+
+An error occurred at line: [22] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+23:     };
+24: 
+25:     String success = (String) session.getAttribute("success");
+
+
+Stacktrace:] with root cause
+	org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: [13] in the jsp file: [/WEB-INF/mailbox.jsp]
+Switch Expressions are supported from Java 14 onwards only
+10:     int    unread     = (request.getAttribute("unread") instanceof Integer) ? (Integer) request.getAttribute("unread") : 0;
+11:     String ctx        = request.getContextPath();
+12: 
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+
+
+An error occurred at line: [14] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+11:     String ctx        = request.getContextPath();
+12: 
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+
+
+An error occurred at line: [15] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+12: 
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+
+
+An error occurred at line: [16] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+13:     String folderTitle = switch (folder != null ? folder : "") {
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+
+
+An error occurred at line: [17] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+14:         case "inbox"     -> "Inbox";
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+
+
+An error occurred at line: [18] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+15:         case "sent"      -> "Sent";
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+
+
+An error occurred at line: [19] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+16:         case "draft"     -> "Drafts";
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+
+
+An error occurred at line: [20] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+17:         case "trash"     -> "Trash";
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+23:     };
+
+
+An error occurred at line: [21] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+18:         case "spam"      -> "Spam";
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+23:     };
+24: 
+
+
+An error occurred at line: [22] in the jsp file: [/WEB-INF/mailbox.jsp]
+Arrow in case statement supported from Java 14 onwards only
+19:         case "starred"   -> "Starred";
+20:         case "important" -> "Important";
+21:         case "search"    -> "Search Results";
+22:         default          -> "Mails";
+23:     };
+24: 
+25:     String success = (String) session.getAttribute("success");
+
+
+Stacktrace:
+		at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:81)
+		at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:214)
+		at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:543)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:402)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:372)
+		at org.apache.jasper.compiler.Compiler.compile(Compiler.java:356)
+		at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:603)
+		at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:396)
+		at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:377)
+		at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:325)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:632)
+		at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:408)
+		at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:330)
+		at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:267)
+		at com.javamail.servlet.MailServlet.showFolder(MailServlet.java:113)
+		at com.javamail.servlet.MailServlet.doGet(MailServlet.java:58)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		at java.base/java.lang.Thread.run(Thread.java:842)
+02-Apr-2026 19:24:46.797 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+02-Apr-2026 19:24:46.797 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+02-Apr-2026 19:24:46.802 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@1f782c05')
