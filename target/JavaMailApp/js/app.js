@@ -82,23 +82,28 @@ function updateBulkActions() {
 
 // ── Star toggle (AJAX) ────────────────────────────────────
 function toggleStar(btn, mailId) {
+  btn.classList.toggle("starred"); // instant UI
+
   fetch(`${contextPath}/mail/star`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `mailId=${mailId}&redirect=inbox`,
-  }).then(() => {
-    btn.classList.toggle("starred");
-    btn.title = btn.classList.contains("starred") ? "Unstar" : "Star";
+  }).catch(() => {
+    btn.classList.toggle("starred"); // rollback if error
   });
 }
 
 // ── Mark important (AJAX) ─────────────────────────────────
 function toggleImportant(btn, mailId) {
+  btn.classList.toggle("important"); // instant UI
+
   fetch(`${contextPath}/mail/important`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: `mailId=${mailId}&redirect=inbox`,
-  }).then(() => btn.classList.toggle("important"));
+  }).catch(() => {
+    btn.classList.toggle("important"); // rollback
+  });
 }
 
 // ── Confirm delete ────────────────────────────────────────

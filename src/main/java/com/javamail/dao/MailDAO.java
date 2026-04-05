@@ -9,19 +9,20 @@ import java.util.List;
 
 /**
  * MailDAO - Data Access Object for Mail operations.
- * Covers: send, draft, inbox, sent, trash, spam, star, important, search, read-status.
+ * Covers: send, draft, inbox, sent, trash, spam, star, important, search,
+ * read-status.
  */
 public class MailDAO {
 
     // ── Send a mail ──────────────────────────────────────
     public boolean sendMail(Mail mail) throws SQLException {
         String sql = "INSERT INTO mails (from_email, to_email, cc_email, bcc_email, subject, body, status) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, 'SENT')";
+                "VALUES (?, ?, ?, ?, ?, ?, 'SENT')";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, mail.getFromEmail());
             ps.setString(2, mail.getToEmail());
-            ps.setString(3, mail.getCcEmail()  != null ? mail.getCcEmail()  : "");
+            ps.setString(3, mail.getCcEmail() != null ? mail.getCcEmail() : "");
             ps.setString(4, mail.getBccEmail() != null ? mail.getBccEmail() : "");
             ps.setString(5, mail.getSubject());
             ps.setString(6, mail.getBody());
@@ -32,15 +33,15 @@ public class MailDAO {
     // ── Save as draft ────────────────────────────────────
     public boolean saveDraft(Mail mail) throws SQLException {
         String sql = "INSERT INTO mails (from_email, to_email, cc_email, bcc_email, subject, body, status) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, 'DRAFT')";
+                "VALUES (?, ?, ?, ?, ?, ?, 'DRAFT')";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, mail.getFromEmail());
-            ps.setString(2, mail.getToEmail()  != null ? mail.getToEmail()  : "");
-            ps.setString(3, mail.getCcEmail()  != null ? mail.getCcEmail()  : "");
+            ps.setString(2, mail.getToEmail() != null ? mail.getToEmail() : "");
+            ps.setString(3, mail.getCcEmail() != null ? mail.getCcEmail() : "");
             ps.setString(4, mail.getBccEmail() != null ? mail.getBccEmail() : "");
-            ps.setString(5, mail.getSubject()  != null ? mail.getSubject()  : "");
-            ps.setString(6, mail.getBody()     != null ? mail.getBody()     : "");
+            ps.setString(5, mail.getSubject() != null ? mail.getSubject() : "");
+            ps.setString(6, mail.getBody() != null ? mail.getBody() : "");
             return ps.executeUpdate() > 0;
         }
     }
@@ -49,7 +50,7 @@ public class MailDAO {
     public boolean sendDraft(int mailId) throws SQLException {
         String sql = "UPDATE mails SET status = 'SENT', sent_at = NOW() WHERE id = ? AND status = 'DRAFT'";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, mailId);
             return ps.executeUpdate() > 0;
         }
@@ -58,38 +59,38 @@ public class MailDAO {
     // ── Inbox: mails received by the user ───────────────
     public List<Mail> getInbox(String email) throws SQLException {
         String sql = "SELECT m.*, u.username AS from_username " +
-                     "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
-                     "WHERE m.to_email = ? AND m.status = 'SENT' " +
-                     "ORDER BY m.sent_at DESC";
+                "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
+                "WHERE m.to_email = ? AND m.status = 'SENT' " +
+                "ORDER BY m.sent_at DESC";
         return fetchList(sql, email);
     }
 
     // ── Sent: mails sent by the user ────────────────────
     public List<Mail> getSentMails(String email) throws SQLException {
         String sql = "SELECT m.*, u.username AS from_username " +
-                     "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
-                     "WHERE m.from_email = ? AND m.status = 'SENT' " +
-                     "ORDER BY m.sent_at DESC";
+                "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
+                "WHERE m.from_email = ? AND m.status = 'SENT' " +
+                "ORDER BY m.sent_at DESC";
         return fetchList(sql, email);
     }
 
     // ── Drafts ───────────────────────────────────────────
     public List<Mail> getDrafts(String email) throws SQLException {
         String sql = "SELECT m.*, u.username AS from_username " +
-                     "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
-                     "WHERE m.from_email = ? AND m.status = 'DRAFT' " +
-                     "ORDER BY m.sent_at DESC";
+                "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
+                "WHERE m.from_email = ? AND m.status = 'DRAFT' " +
+                "ORDER BY m.sent_at DESC";
         return fetchList(sql, email);
     }
 
     // ── Trash ────────────────────────────────────────────
     public List<Mail> getTrash(String email) throws SQLException {
         String sql = "SELECT m.*, u.username AS from_username " +
-                     "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
-                     "WHERE (m.from_email = ? OR m.to_email = ?) AND m.status = 'DELETED' " +
-                     "ORDER BY m.sent_at DESC";
+                "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
+                "WHERE (m.from_email = ? OR m.to_email = ?) AND m.status = 'DELETED' " +
+                "ORDER BY m.sent_at DESC";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
             ps.setString(2, email);
             return buildList(ps);
@@ -99,20 +100,20 @@ public class MailDAO {
     // ── Spam ─────────────────────────────────────────────
     public List<Mail> getSpam(String email) throws SQLException {
         String sql = "SELECT m.*, u.username AS from_username " +
-                     "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
-                     "WHERE m.to_email = ? AND m.status = 'SPAM' " +
-                     "ORDER BY m.sent_at DESC";
+                "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
+                "WHERE m.to_email = ? AND m.status = 'SPAM' " +
+                "ORDER BY m.sent_at DESC";
         return fetchList(sql, email);
     }
 
     // ── Starred ──────────────────────────────────────────
     public List<Mail> getStarred(String email) throws SQLException {
         String sql = "SELECT m.*, u.username AS from_username " +
-                     "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
-                     "WHERE (m.from_email = ? OR m.to_email = ?) AND m.is_starred = 1 " +
-                     "ORDER BY m.sent_at DESC";
+                "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
+                "WHERE (m.from_email = ? OR m.to_email = ?) AND m.is_starred = 1 " +
+                "ORDER BY m.sent_at DESC";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
             ps.setString(2, email);
             return buildList(ps);
@@ -122,11 +123,11 @@ public class MailDAO {
     // ── Important ────────────────────────────────────────
     public List<Mail> getImportant(String email) throws SQLException {
         String sql = "SELECT m.*, u.username AS from_username " +
-                     "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
-                     "WHERE (m.from_email = ? OR m.to_email = ?) AND m.is_important = 1 " +
-                     "ORDER BY m.sent_at DESC";
+                "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
+                "WHERE (m.from_email = ? OR m.to_email = ?) AND m.is_important = 1 " +
+                "ORDER BY m.sent_at DESC";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
             ps.setString(2, email);
             return buildList(ps);
@@ -136,13 +137,14 @@ public class MailDAO {
     // ── Get mail by ID ───────────────────────────────────
     public Mail getMailById(int id) throws SQLException {
         String sql = "SELECT m.*, u.username AS from_username " +
-                     "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
-                     "WHERE m.id = ?";
+                "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
+                "WHERE m.id = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) return mapRow(rs);
+                if (rs.next())
+                    return mapRow(rs);
             }
         }
         return null;
@@ -162,7 +164,7 @@ public class MailDAO {
     public boolean toggleStar(int mailId) throws SQLException {
         String sql = "UPDATE mails SET is_starred = 1 - is_starred WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, mailId);
             return ps.executeUpdate() > 0;
         }
@@ -170,9 +172,10 @@ public class MailDAO {
 
     // ── Toggle important ─────────────────────────────────
     public boolean toggleImportant(int mailId) throws SQLException {
-        String sql = "UPDATE mails SET is_important = 1 - is_important WHERE id = ?";
+        String sql = "UPDATE mails SET is_important = CASE WHEN is_important = 1 THEN 0 ELSE 1 END WHERE id = ?";
+
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, mailId);
             return ps.executeUpdate() > 0;
         }
@@ -197,7 +200,7 @@ public class MailDAO {
     public boolean permanentDelete(int mailId) throws SQLException {
         String sql = "DELETE FROM mails WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, mailId);
             return ps.executeUpdate() > 0;
         }
@@ -207,7 +210,7 @@ public class MailDAO {
     public boolean emptyTrash(String email) throws SQLException {
         String sql = "DELETE FROM mails WHERE (from_email = ? OR to_email = ?) AND status = 'DELETED'";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
             ps.setString(2, email);
             return ps.executeUpdate() > 0;
@@ -217,13 +220,13 @@ public class MailDAO {
     // ── Search mails ─────────────────────────────────────
     public List<Mail> searchMails(String email, String query) throws SQLException {
         String sql = "SELECT m.*, u.username AS from_username " +
-                     "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
-                     "WHERE (m.from_email = ? OR m.to_email = ?) " +
-                     "  AND (m.subject LIKE ? OR m.body LIKE ? OR m.from_email LIKE ?) " +
-                     "  AND m.status != 'DELETED' " +
-                     "ORDER BY m.sent_at DESC";
+                "FROM mails m LEFT JOIN users u ON m.from_email = u.email " +
+                "WHERE (m.from_email = ? OR m.to_email = ?) " +
+                "  AND (m.subject LIKE ? OR m.body LIKE ? OR m.from_email LIKE ?) " +
+                "  AND m.status != 'DELETED' " +
+                "ORDER BY m.sent_at DESC";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             String q = "%" + query + "%";
             ps.setString(1, email);
             ps.setString(2, email);
@@ -238,10 +241,11 @@ public class MailDAO {
     public int countUnread(String email) throws SQLException {
         String sql = "SELECT COUNT(*) FROM mails WHERE to_email = ? AND is_read = 0 AND status = 'SENT'";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) return rs.getInt(1);
+                if (rs.next())
+                    return rs.getInt(1);
             }
         }
         return 0;
@@ -273,7 +277,7 @@ public class MailDAO {
 
     private List<Mail> fetchList(String sql, String param) throws SQLException {
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, param);
             return buildList(ps);
         }
@@ -282,7 +286,8 @@ public class MailDAO {
     private List<Mail> buildList(PreparedStatement ps) throws SQLException {
         List<Mail> list = new ArrayList<>();
         try (ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) list.add(mapRow(rs));
+            while (rs.next())
+                list.add(mapRow(rs));
         }
         return list;
     }
@@ -290,7 +295,7 @@ public class MailDAO {
     private boolean updateFlag(String column, int value, int mailId) throws SQLException {
         String sql = "UPDATE mails SET " + column + " = ? WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, value);
             ps.setInt(2, mailId);
             return ps.executeUpdate() > 0;
@@ -300,7 +305,7 @@ public class MailDAO {
     private boolean updateStatus(int mailId, String status) throws SQLException {
         String sql = "UPDATE mails SET status = ? WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, status);
             ps.setInt(2, mailId);
             return ps.executeUpdate() > 0;
@@ -321,8 +326,10 @@ public class MailDAO {
         m.setStarred(rs.getBoolean("is_starred"));
         m.setImportant(rs.getBoolean("is_important"));
         m.setSentAt(rs.getTimestamp("sent_at"));
-        try { m.setFromUsername(rs.getString("from_username")); }
-        catch (SQLException ignored) {}
+        try {
+            m.setFromUsername(rs.getString("from_username"));
+        } catch (SQLException ignored) {
+        }
         return m;
     }
 }
