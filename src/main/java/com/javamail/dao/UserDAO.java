@@ -16,12 +16,12 @@ public class UserDAO {
 
     // ── Register a new user ──────────────────────────────
     public boolean register(User user) throws SQLException {
-        String sql = "INSERT INTO users (username, email, password, dob, contact) VALUES (?, ?, SHA2(?, 256), ?, ?)";
+        String sql = "INSERT INTO users (username, email, password, dob, contact) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getEmail());
-            ps.setString(3, user.getPassword());   // raw password; DB applies SHA2
+            ps.setString(3, PasswordUtil.hash(user.getPassword()));
             ps.setString(4, user.getDob());
             ps.setString(5, user.getContact());
             return ps.executeUpdate() > 0;
@@ -30,11 +30,11 @@ public class UserDAO {
 
     // ── Login: email + SHA2 password match ──────────────
     public User login(String email, String password) throws SQLException {
-        String sql = "SELECT * FROM users WHERE email = ? AND password = SHA2(?, 256) AND is_active = 1";
+        String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND is_active = 1";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
-            ps.setString(2, password);
+            ps.setString(2, PasswordUtil.hash(password));
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) return mapRow(rs);
             }
@@ -95,10 +95,10 @@ public class UserDAO {
 
     // ── Change password ──────────────────────────────────
     public boolean changePassword(String email, String newPassword) throws SQLException {
-        String sql = "UPDATE users SET password = SHA2(?, 256) WHERE email = ?";
+        String sql = "UPDATE users SET password = ? WHERE email = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, newPassword);
+            ps.setString(1, PasswordUtil.hash(newPassword));
             ps.setString(2, email);
             return ps.executeUpdate() > 0;
         }

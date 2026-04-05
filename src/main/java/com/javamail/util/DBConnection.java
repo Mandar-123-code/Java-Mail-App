@@ -11,10 +11,10 @@ import java.sql.Statement;
  */
 public class DBConnection {
 
-    private static final String URL      = System.getenv("DB_URL") != null ? System.getenv("DB_URL") : "jdbc:mysql://localhost:3306/javamail_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-    private static final String USER     = System.getenv("DB_USER") != null ? System.getenv("DB_USER") : "root";
-    private static final String PASSWORD = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "root";
-    private static final String DRIVER   = "com.mysql.cj.jdbc.Driver";
+    private static final String URL      = System.getenv("DB_URL") != null ? System.getenv("DB_URL") : "jdbc:postgresql://localhost:5432/javamail_db";
+    private static final String USER     = System.getenv("DB_USER") != null ? System.getenv("DB_USER") : "postgres";
+    private static final String PASSWORD = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "postgres";
+    private static final String DRIVER   = "org.postgresql.Driver";
 
     private static Connection connection = null;
     private static boolean schemaInitialized = false;
@@ -33,7 +33,7 @@ public class DBConnection {
                 System.out.println("[DB] Connection established successfully.");
             }
         } catch (ClassNotFoundException e) {
-            throw new SQLException("MySQL JDBC Driver not found. Add mysql-connector-j to your classpath.", e);
+            throw new SQLException("PostgreSQL JDBC Driver not found. Add postgresql to your classpath.", e);
         }
         return connection;
     }
@@ -50,31 +50,31 @@ public class DBConnection {
         try (Statement stmt = conn.createStatement()) {
             stmt.execute("""
                 CREATE TABLE IF NOT EXISTS users (
-                    id          INT AUTO_INCREMENT PRIMARY KEY,
+                    id          SERIAL PRIMARY KEY,
                     username    VARCHAR(100) NOT NULL,
                     email       VARCHAR(150) NOT NULL UNIQUE,
                     password    VARCHAR(255) NOT NULL,
                     dob         DATE,
                     contact     VARCHAR(15),
                     profile_pic VARCHAR(255) DEFAULT 'default.png',
-                    is_active   TINYINT(1) DEFAULT 1,
+                    is_active   SMALLINT DEFAULT 1,
                     created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
                 """);
 
             stmt.execute("""
                 CREATE TABLE IF NOT EXISTS mails (
-                    id           INT AUTO_INCREMENT PRIMARY KEY,
+                    id           SERIAL PRIMARY KEY,
                     from_email   VARCHAR(150) NOT NULL,
                     to_email     VARCHAR(150) NOT NULL,
                     cc_email     VARCHAR(500) DEFAULT '',
                     bcc_email    VARCHAR(500) DEFAULT '',
                     subject      VARCHAR(300) NOT NULL,
                     body         TEXT,
-                    status       ENUM('SENT','DRAFT','DELETED','SPAM') DEFAULT 'SENT',
-                    is_read      TINYINT(1) DEFAULT 0,
-                    is_starred   TINYINT(1) DEFAULT 0,
-                    is_important TINYINT(1) DEFAULT 0,
+                    status       VARCHAR(20) DEFAULT 'SENT',
+                    is_read      SMALLINT DEFAULT 0,
+                    is_starred   SMALLINT DEFAULT 0,
+                    is_important SMALLINT DEFAULT 0,
                     sent_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY (from_email) REFERENCES users(email) ON DELETE CASCADE
                 )
@@ -82,7 +82,7 @@ public class DBConnection {
 
             stmt.execute("""
                 CREATE TABLE IF NOT EXISTS labels (
-                    id         INT AUTO_INCREMENT PRIMARY KEY,
+                    id         SERIAL PRIMARY KEY,
                     user_email VARCHAR(150) NOT NULL,
                     label_name VARCHAR(100) NOT NULL,
                     color      VARCHAR(20) DEFAULT '#4CAF50',
@@ -102,7 +102,7 @@ public class DBConnection {
 
             stmt.execute("""
                 CREATE TABLE IF NOT EXISTS attachments (
-                    id         INT AUTO_INCREMENT PRIMARY KEY,
+                    id         SERIAL PRIMARY KEY,
                     mail_id    INT NOT NULL,
                     file_name  VARCHAR(255) NOT NULL,
                     file_path  VARCHAR(500) NOT NULL,
@@ -114,7 +114,7 @@ public class DBConnection {
 
             stmt.execute("""
                 CREATE TABLE IF NOT EXISTS contacts (
-                    id            INT AUTO_INCREMENT PRIMARY KEY,
+                    id            SERIAL PRIMARY KEY,
                     owner_email   VARCHAR(150) NOT NULL,
                     contact_name  VARCHAR(100),
                     contact_email VARCHAR(150) NOT NULL,
@@ -123,10 +123,11 @@ public class DBConnection {
                 """);
 
             stmt.execute("""
-                INSERT IGNORE INTO users (username, email, password, dob, contact) VALUES
-                ('Admin User',    'admin@javamail.com', SHA2('admin123', 256), '1990-01-01', '9999999999'),
-                ('Alice Johnson', 'alice@javamail.com', SHA2('alice123', 256), '1995-05-15', '9876543210'),
-                ('Bob Smith',     'bob@javamail.com',   SHA2('bob123',   256), '1992-08-20', '9123456789')
+                INSERT INTO users (username, email, password, dob, contact) VALUES
+                ('Admin User',    'admin@javamail.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '1990-01-01', '9999999999'),
+                ('Alice Johnson', 'alice@javamail.com', '8a2c2084c8a29a0083ade45e0f760dafaaf986eb79f4de0bb79e5e79601d3cb4', '1995-05-15', '9876543210'),
+                ('Bob Smith',     'bob@javamail.com',   'fdfb746d8ba96637e6b010b1442debe1aee1d3b038fb87002ea9a5ec92f03f38', '1992-08-20', '9123456789')
+                ON CONFLICT (email) DO NOTHING
                 """);
         }
 

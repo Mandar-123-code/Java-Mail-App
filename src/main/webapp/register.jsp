@@ -81,7 +81,7 @@
     <div class="auth-visual-glow"></div>
     <div class="auth-visual-title">Join<br>JavaMail.</div>
     <div class="auth-visual-sub">
-      A full-featured email platform with compose, inbox, drafts, trash, spam, starred, search and more — all persisted to MySQL.
+      A full-featured email platform with compose, inbox, drafts, trash, spam, starred, search and more — all persisted to PostgreSQL.
     </div>
     <div class="auth-features">
       <div class="auth-feature">

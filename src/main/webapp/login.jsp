@@ -79,7 +79,7 @@
         <div class="auth-feature-icon">⚡</div>
         <div class="auth-feature-text">
           <strong>JDBC Backed</strong>
-          All data persisted to MySQL via PreparedStatements — fully production-ready
+          All data persisted to PostgreSQL via PreparedStatements — fully production-ready
         </div>
       </div>
       <div class="auth-feature">

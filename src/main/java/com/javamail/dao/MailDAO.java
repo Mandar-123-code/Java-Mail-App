@@ -160,7 +160,7 @@ public class MailDAO {
 
     // ── Toggle star ──────────────────────────────────────
     public boolean toggleStar(int mailId) throws SQLException {
-        String sql = "UPDATE mails SET is_starred = NOT is_starred WHERE id = ?";
+        String sql = "UPDATE mails SET is_starred = 1 - is_starred WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, mailId);
@@ -170,7 +170,7 @@ public class MailDAO {
 
     // ── Toggle important ─────────────────────────────────
     public boolean toggleImportant(int mailId) throws SQLException {
-        String sql = "UPDATE mails SET is_important = NOT is_important WHERE id = ?";
+        String sql = "UPDATE mails SET is_important = 1 - is_important WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, mailId);
