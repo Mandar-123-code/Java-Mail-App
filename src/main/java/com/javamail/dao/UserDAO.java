@@ -18,11 +18,22 @@ public class UserDAO {
     public boolean register(User user) throws SQLException {
         String sql = "INSERT INTO users (username, email, password, dob, contact) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getEmail());
             ps.setString(3, PasswordUtil.hash(user.getPassword()));
-            ps.setString(4, user.getDob());
+            String dobStr = user.getDob();
+            java.sql.Date dob = null;
+
+            if (dobStr != null && !dobStr.isEmpty()) {
+                dob = java.sql.Date.valueOf(dobStr);
+            }
+
+            if (dob != null) {
+                ps.setDate(4, dob);
+            } else {
+                ps.setNull(4, java.sql.Types.DATE);
+            }
             ps.setString(5, user.getContact());
             return ps.executeUpdate() > 0;
         }
@@ -32,11 +43,12 @@ public class UserDAO {
     public User login(String email, String password) throws SQLException {
         String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND is_active = 1";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
             ps.setString(2, PasswordUtil.hash(password));
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) return mapRow(rs);
+                if (rs.next())
+                    return mapRow(rs);
             }
         }
         return null;
@@ -46,7 +58,7 @@ public class UserDAO {
     public boolean emailExists(String email) throws SQLException {
         String sql = "SELECT id FROM users WHERE email = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
                 return rs.next();
@@ -58,10 +70,11 @@ public class UserDAO {
     public User getUserByEmail(String email) throws SQLException {
         String sql = "SELECT * FROM users WHERE email = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) return mapRow(rs);
+                if (rs.next())
+                    return mapRow(rs);
             }
         }
         return null;
@@ -71,10 +84,11 @@ public class UserDAO {
     public User getUserById(int id) throws SQLException {
         String sql = "SELECT * FROM users WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) return mapRow(rs);
+                if (rs.next())
+                    return mapRow(rs);
             }
         }
         return null;
@@ -84,9 +98,20 @@ public class UserDAO {
     public boolean updateProfile(User user) throws SQLException {
         String sql = "UPDATE users SET username = ?, dob = ?, contact = ? WHERE email = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, user.getUsername());
-            ps.setString(2, user.getDob());
+            String dobStr = user.getDob();
+            java.sql.Date dob = null;
+
+            if (dobStr != null && !dobStr.isEmpty()) {
+                dob = java.sql.Date.valueOf(dobStr);
+            }
+
+            if (dob != null) {
+                ps.setDate(2, dob);
+            } else {
+                ps.setNull(2, java.sql.Types.DATE);
+            }
             ps.setString(3, user.getContact());
             ps.setString(4, user.getEmail());
             return ps.executeUpdate() > 0;
@@ -97,7 +122,7 @@ public class UserDAO {
     public boolean changePassword(String email, String newPassword) throws SQLException {
         String sql = "UPDATE users SET password = ? WHERE email = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, PasswordUtil.hash(newPassword));
             ps.setString(2, email);
             return ps.executeUpdate() > 0;
@@ -108,7 +133,7 @@ public class UserDAO {
     public boolean deactivateAccount(String email) throws SQLException {
         String sql = "UPDATE users SET is_active = 0 WHERE email = ?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, email);
             return ps.executeUpdate() > 0;
         }
@@ -119,12 +144,13 @@ public class UserDAO {
         String sql = "SELECT * FROM users WHERE (username LIKE ? OR email LIKE ?) AND is_active = 1 LIMIT 10";
         List<User> list = new ArrayList<>();
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             String q = "%" + query + "%";
             ps.setString(1, q);
             ps.setString(2, q);
             try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) list.add(mapRow(rs));
+                while (rs.next())
+                    list.add(mapRow(rs));
             }
         }
         return list;
@@ -135,9 +161,10 @@ public class UserDAO {
         String sql = "SELECT * FROM users WHERE is_active = 1 ORDER BY created_at DESC";
         List<User> list = new ArrayList<>();
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) list.add(mapRow(rs));
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next())
+                list.add(mapRow(rs));
         }
         return list;
     }

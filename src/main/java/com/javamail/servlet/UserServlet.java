@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * UserServlet - Handles user registration, login, logout, and profile management.
+ * UserServlet - Handles user registration, login, logout, and profile
+ * management.
  * Maps all /user/* URLs.
  */
 @WebServlet("/user/*")
@@ -30,10 +31,10 @@ public class UserServlet extends HttpServlet {
 
         try {
             switch (path) {
-                case "/login"    -> handleLogin(req, resp);
+                case "/login" -> handleLogin(req, resp);
                 case "/register" -> handleRegister(req, resp);
-                case "/logout"   -> handleLogout(req, resp);
-                case "/profile"  -> handleUpdateProfile(req, resp);
+                case "/logout" -> handleLogout(req, resp);
+                case "/profile" -> handleUpdateProfile(req, resp);
                 case "/password" -> handleChangePassword(req, resp);
                 default -> resp.sendError(HttpServletResponse.SC_NOT_FOUND);
             }
@@ -66,7 +67,7 @@ public class UserServlet extends HttpServlet {
     // ── LOGIN ────────────────────────────────────────────
     private void handleLogin(HttpServletRequest req, HttpServletResponse resp)
             throws SQLException, IOException {
-        String email    = req.getParameter("email");
+        String email = req.getParameter("email");
         String password = req.getParameter("password");
 
         User user = userDAO.login(email, password);
@@ -86,11 +87,11 @@ public class UserServlet extends HttpServlet {
     private void handleRegister(HttpServletRequest req, HttpServletResponse resp)
             throws SQLException, IOException {
         String firstname = req.getParameter("firstname");
-        String lastname  = req.getParameter("lastname");
-        String email     = req.getParameter("email");
-        String password  = req.getParameter("password");
-        String dob       = req.getParameter("dob");
-        String contact   = req.getParameter("contact");
+        String lastname = req.getParameter("lastname");
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        String dob = req.getParameter("dob");
+        String contact = req.getParameter("contact");
 
         if (userDAO.emailExists(email)) {
             req.getSession().setAttribute("error", "Email already registered.");
@@ -112,7 +113,8 @@ public class UserServlet extends HttpServlet {
     private void handleLogout(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
         HttpSession session = req.getSession(false);
-        if (session != null) session.invalidate();
+        if (session != null)
+            session.invalidate();
         resp.sendRedirect(req.getContextPath() + "/login.jsp");
     }
 
@@ -120,7 +122,10 @@ public class UserServlet extends HttpServlet {
     private void handleUpdateProfile(HttpServletRequest req, HttpServletResponse resp)
             throws SQLException, IOException, ServletException {
         HttpSession session = req.getSession(false);
-        if (session == null) { resp.sendRedirect(req.getContextPath() + "/login.jsp"); return; }
+        if (session == null) {
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+            return;
+        }
 
         User user = (User) session.getAttribute("user");
         user.setUsername(req.getParameter("username"));
@@ -140,12 +145,15 @@ public class UserServlet extends HttpServlet {
     private void handleChangePassword(HttpServletRequest req, HttpServletResponse resp)
             throws SQLException, IOException {
         HttpSession session = req.getSession(false);
-        if (session == null) { resp.sendRedirect(req.getContextPath() + "/login.jsp"); return; }
+        if (session == null) {
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+            return;
+        }
 
-        User user       = (User) session.getAttribute("user");
-        String current  = req.getParameter("currentPassword");
-        String newPass  = req.getParameter("newPassword");
-        String confirm  = req.getParameter("confirmPassword");
+        User user = (User) session.getAttribute("user");
+        String current = req.getParameter("currentPassword");
+        String newPass = req.getParameter("newPassword");
+        String confirm = req.getParameter("confirmPassword");
 
         // Verify current password
         User verified = userDAO.login(user.getEmail(), current);
@@ -165,7 +173,10 @@ public class UserServlet extends HttpServlet {
     private void showProfilePage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException, SQLException {
         HttpSession session = req.getSession(false);
-        if (session == null) { resp.sendRedirect(req.getContextPath() + "/login.jsp"); return; }
+        if (session == null) {
+            resp.sendRedirect(req.getContextPath() + "/login.jsp");
+            return;
+        }
         req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
     }
 }
