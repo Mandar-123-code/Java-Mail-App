@@ -11,15 +11,53 @@ import java.sql.Statement;
  */
 public class DBConnection {
 
-    private static final String URL      = System.getenv("DB_URL") != null ? System.getenv("DB_URL") : "jdbc:postgresql://localhost:5432/javamail_db";
-    private static final String USER     = System.getenv("DB_USER") != null ? System.getenv("DB_USER") : "postgres";
-    private static final String PASSWORD = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "postgres";
-    private static final String DRIVER   = "org.postgresql.Driver";
+    private static final String DRIVER = "org.postgresql.Driver";
+
+    private static String dbUrl;
+    private static String dbUser;
+    private static String dbPassword;
 
     private static Connection connection = null;
     private static boolean schemaInitialized = false;
 
     private DBConnection() {}
+
+    static {
+        // Render provides DATABASE_URL in format: postgres://user:password@host:port/dbname
+        String renderUrl = System.getenv("DATABASE_URL");
+        String envUrl    = System.getenv("DB_URL");
+
+        if (renderUrl != null && !renderUrl.isEmpty()) {
+            // Parse Render's postgres:// URL into JDBC format
+            try {
+                java.net.URI uri = new java.net.URI(renderUrl);
+                String host = uri.getHost();
+                int port = uri.getPort() > 0 ? uri.getPort() : 5432;
+                String path = uri.getPath(); // e.g. /dbname
+                String userInfo = uri.getUserInfo(); // e.g. user:password
+
+                dbUrl = "jdbc:postgresql://" + host + ":" + port + path;
+                if (userInfo != null && userInfo.contains(":")) {
+                    dbUser = userInfo.split(":")[0];
+                    dbPassword = userInfo.split(":", 2)[1];
+                }
+                System.out.println("[DB] Using Render DATABASE_URL -> " + host + ":" + port + path);
+            } catch (Exception e) {
+                System.err.println("[DB] Failed to parse DATABASE_URL: " + e.getMessage());
+                dbUrl = "jdbc:postgresql://localhost:5432/javamail_db";
+                dbUser = "postgres";
+                dbPassword = "postgres";
+            }
+        } else if (envUrl != null && !envUrl.isEmpty()) {
+            dbUrl = envUrl;
+            dbUser = System.getenv("DB_USER") != null ? System.getenv("DB_USER") : "postgres";
+            dbPassword = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "postgres";
+        } else {
+            dbUrl = "jdbc:postgresql://localhost:5432/javamail_db";
+            dbUser = "postgres";
+            dbPassword = "postgres";
+        }
+    }
 
     /**
      * Returns a live Connection. Creates one if it doesn't exist or is closed.
@@ -28,7 +66,7 @@ public class DBConnection {
         try {
             if (connection == null || connection.isClosed()) {
                 Class.forName(DRIVER);
-                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
                 initializeSchema(connection);
                 System.out.println("[DB] Connection established successfully.");
             }
