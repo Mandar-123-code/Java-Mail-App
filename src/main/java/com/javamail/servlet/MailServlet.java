@@ -218,8 +218,14 @@ public class MailServlet extends HttpServlet {
     // ── Generic flag handler ─────────────────────────────
     private void handleFlag(HttpServletRequest req, HttpServletResponse resp,
             User user, String action)
-            throws SQLException, IOException {
-        int mailId = Integer.parseInt(req.getParameter("mailId"));
+            throws SQLException, IOException, ServletException {
+        String mailIdStr = req.getParameter("mailId");
+
+        if (mailIdStr == null || mailIdStr.isEmpty()) {
+            throw new ServletException("Mail ID is missing");
+        }
+
+        int mailId = Integer.parseInt(mailIdStr);
         String redirect = req.getParameter("redirect");
         if (redirect == null || redirect.isEmpty())
             redirect = "inbox";
