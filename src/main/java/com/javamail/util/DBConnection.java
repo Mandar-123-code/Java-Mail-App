@@ -37,11 +37,18 @@ public class DBConnection {
                 String userInfo = uri.getUserInfo(); // e.g. user:password
 
                 dbUrl = "jdbc:postgresql://" + host + ":" + port + path;
+                String query = uri.getQuery();
+                if (query != null && !query.isEmpty()) {
+                    dbUrl += "?" + query;
+                } else {
+                    dbUrl += "?sslmode=require";
+                }
+
                 if (userInfo != null && userInfo.contains(":")) {
                     dbUser = userInfo.split(":")[0];
                     dbPassword = userInfo.split(":", 2)[1];
                 }
-                System.out.println("[DB] Using Render DATABASE_URL -> " + host + ":" + port + path);
+                System.out.println("[DB] Using Render DATABASE_URL -> " + host + ":" + port + path + " (sslmode=require)");
             } catch (Exception e) {
                 System.err.println("[DB] Failed to parse DATABASE_URL: " + e.getMessage());
                 dbUrl = "jdbc:postgresql://localhost:5432/javamail_db";
