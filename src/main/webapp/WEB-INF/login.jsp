@@ -34,14 +34,23 @@
     <h1 class="auth-heading">Welcome back</h1>
     <p class="auth-sub">Sign in to your account to continue</p>
 
-    <% if (error != null) { %>
+    <%
+      String errorMsg = (String) request.getAttribute("errorMessage");
+      String successMsg = (String) request.getAttribute("successMessage");
+    %>
+    <% if (errorMsg != null) { %>
+      <div class="alert alert-error">⚠ <%= errorMsg %></div>
+    <% } else if (error != null) { %>
       <div class="alert alert-error">⚠ <%= error %></div>
     <% } %>
-    <% if (success != null) { %>
+    <% if (successMsg != null) { %>
+      <div class="alert alert-success">✓ <%= successMsg %></div>
+    <% } else if (success != null) { %>
       <div class="alert alert-success">✓ <%= success %></div>
     <% } %>
 
-    <form action="<%= request.getContextPath() %>/user/login" method="POST">
+
+    <form action="<%= request.getContextPath() %>/login" method="POST">
       <div class="form-group">
         <label class="form-label">Email address</label>
         <input class="form-input" type="email" name="email" placeholder="you@example.com" required autofocus>
@@ -56,8 +65,9 @@
     </form>
 
     <div class="auth-footer">
-      Don't have an account? <a href="<%= request.getContextPath() %>/register.jsp">Create one</a>
+      Don't have an account? <a href="<%= request.getContextPath() %>/register">Create one</a>
     </div>
+
   </div>
 
   <!-- ── Right: Visual ─────────────────────────── -->

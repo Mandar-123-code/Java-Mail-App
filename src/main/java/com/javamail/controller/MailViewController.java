@@ -162,21 +162,36 @@ public class MailViewController {
         return "compose";
     }
 
-    @PostMapping({"/sendmail", "/mail/send"})
-    public String sendMail(@RequestParam("toEmail") String toEmail,
-                           @RequestParam(value = "ccEmail", required = false) String ccEmail,
-                           @RequestParam(value = "bccEmail", required = false) String bccEmail,
-                           @RequestParam("subject") String subject,
-                           @RequestParam("body") String body,
+    @PostMapping({"/sendmail", "/mail/send", "/mail/draft/save"})
+    public String sendMail(@RequestParam(value = "toEmail", required = false) String toEmailParam,
+                           @RequestParam(value = "to", required = false) String toParam,
+                           @RequestParam(value = "ccEmail", required = false) String ccEmailParam,
+                           @RequestParam(value = "cc", required = false) String ccParam,
+                           @RequestParam(value = "bccEmail", required = false) String bccEmailParam,
+                           @RequestParam(value = "bcc", required = false) String bccParam,
+                           @RequestParam(value = "subject", required = false, defaultValue = "") String subject,
+                           @RequestParam(value = "body", required = false, defaultValue = "") String body,
                            @RequestParam(value = "action", required = false, defaultValue = "send") String action,
                            @RequestParam(value = "draftId", required = false) Integer draftId,
+                           HttpServletRequest request,
                            @AuthenticationPrincipal User principal,
                            HttpSession session,
                            RedirectAttributes redirectAttributes) {
         User user = getAuthenticatedUser(principal, session);
         if (user == null) return "redirect:/login";
 
-        if ("draft".equalsIgnoreCase(action)) {
+        String toEmail = (toEmailParam != null && !toEmailParam.trim().isEmpty()) ? toEmailParam.trim() : (toParam != null ? toParam.trim() : "");
+        String ccEmail = (ccEmailParam != null && !ccEmailParam.trim().isEmpty()) ? ccEmailParam.trim() : (ccParam != null ? ccParam.trim() : "");
+        String bccEmail = (bccEmailParam != null && !bccEmailParam.trim().isEmpty()) ? bccEmailParam.trim() : (bccParam != null ? bccParam.trim() : "");
+
+        boolean isDraft = "draft".equalsIgnoreCase(action) || request.getRequestURI().contains("/draft");
+
+        if (!isDraft && toEmail.isEmpty()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Recipient email ('To') is required.");
+            return "redirect:/compose";
+        }
+
+        if (isDraft) {
             mailService.saveDraft(user.getEmail(), toEmail, ccEmail, bccEmail, subject, body, draftId);
             redirectAttributes.addFlashAttribute("successMessage", "Draft saved successfully.");
             return "redirect:/mailbox?folder=drafts";
@@ -189,6 +204,7 @@ public class MailViewController {
             return "redirect:/mailbox?folder=sent";
         }
     }
+
 
     @PostMapping("/mail/star")
     public String toggleStarPost(@RequestParam("id") int id, RedirectAttributes redirectAttributes) {

@@ -65,6 +65,12 @@
   <div class="sidebar-divider"></div>
 
   <!-- Settings -->
+  <span class="nav-section-label">Preferences</span>
+  <button id="theme-toggle-btn" class="theme-toggle-btn" type="button">
+    <span class="theme-toggle-icon" id="theme-toggle-icon">🌙</span>
+    <span id="theme-toggle-text">Dark Mode</span>
+  </button>
+
   <span class="nav-section-label">Account</span>
   <a href="<%= __ctx %>/user/profile"
      class="nav-item <%= "profile".equals(__folder) ? "active" : "" %>">

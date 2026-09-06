@@ -177,7 +177,44 @@ function colorForEmail(email) {
   return avatarColors[h % avatarColors.length];
 }
 
+// ── Light / Dark Theme Switcher ──────────────────────────
+function initTheme() {
+  const savedTheme = localStorage.getItem("javamail-theme") || "light";
+  applyTheme(savedTheme);
+
+  const toggleBtn = document.getElementById("theme-toggle-btn");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      applyTheme(newTheme);
+      localStorage.setItem("javamail-theme", newTheme);
+    });
+  }
+}
+
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+  }
+  
+  const iconEl = document.getElementById("theme-toggle-icon");
+  const textEl = document.getElementById("theme-toggle-text");
+  if (iconEl && textEl) {
+    if (theme === "dark") {
+      iconEl.textContent = "☀️";
+      textEl.textContent = "Light Mode";
+    } else {
+      iconEl.textContent = "🌙";
+      textEl.textContent = "Dark Mode";
+    }
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initTheme();
   document.querySelectorAll("[data-email-avatar]").forEach((el) => {
     const email = el.dataset.emailAvatar;
     const name = el.dataset.name || email;

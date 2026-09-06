@@ -86,28 +86,27 @@
         <!-- To -->
         <div class="compose-field">
           <span class="compose-field-label">To</span>
-          <input type="email" id="to-field" name="to" form="mail-form"
+          <input type="email" id="to-field" name="toEmail" form="mail-form"
                  value="<%= toVal %>"
-                 placeholder="recipient@example.com" required
-                 <%= "reply".equals(composeMode) ? "" : "" %>>
+                 placeholder="recipient@example.com" required>
         </div>
 
         <!-- CC (collapsible) -->
         <div class="compose-field" id="cc-row" style="display:none;">
           <span class="compose-field-label">CC</span>
-          <input type="email" name="cc" form="mail-form" placeholder="cc@example.com">
+          <input type="email" name="ccEmail" id="cc-field" form="mail-form" placeholder="cc@example.com">
         </div>
 
         <!-- BCC (collapsible) -->
         <div class="compose-field" id="bcc-row" style="display:none;">
           <span class="compose-field-label">BCC</span>
-          <input type="email" name="bcc" form="mail-form" placeholder="bcc@example.com">
+          <input type="email" name="bccEmail" id="bcc-field" form="mail-form" placeholder="bcc@example.com">
         </div>
 
         <!-- Subject -->
         <div class="compose-field">
           <span class="compose-field-label">Subject</span>
-          <input type="text" name="subject" form="mail-form"
+          <input type="text" name="subject" id="subject-field" form="mail-form"
                  value="<%= subjectVal %>"
                  placeholder="Subject" required>
         </div>
@@ -139,8 +138,13 @@
       </div><!-- /compose-form-card -->
 
       <!-- Actual form (outside card so button can submit it) -->
-      <form id="mail-form" action="<%= ctx %>/mail/send" method="POST" style="display:none;">
-        <input type="hidden" name="_action" id="form-action" value="send">
+      <form id="mail-form" action="<%= ctx %>/sendmail" method="POST">
+        <input type="hidden" name="action" id="form-action" value="send">
+        <input type="hidden" name="toEmail" id="hidden-toEmail">
+        <input type="hidden" name="ccEmail" id="hidden-ccEmail">
+        <input type="hidden" name="bccEmail" id="hidden-bccEmail">
+        <input type="hidden" name="subject" id="hidden-subject">
+        <input type="hidden" name="body" id="hidden-body">
       </form>
 
     </div><!-- /compose-area -->
@@ -156,42 +160,29 @@ function toggleField(id) {
 
 function submitForm(action) {
   const form = document.getElementById('mail-form');
+  const actionInput = document.getElementById('form-action');
+  if (actionInput) actionInput.value = action;
+  
   if (action === 'draft') {
     form.action = contextPath + '/mail/draft/save';
   } else {
-    form.action = contextPath + '/mail/send';
+    form.action = contextPath + '/sendmail';
   }
-  // Copy inline inputs to hidden form
-  ['to', 'cc', 'bcc', 'subject', 'body'].forEach(name => {
-    let src = document.querySelector(`[name="${name}"]`);
-    if (!src) src = document.getElementById(name === 'body' ? 'mail-body' : name + '-field');
-    if (src) {
-      let inp = form.querySelector(`[name="${name}"]`);
-      if (!inp) {
-        inp = document.createElement('input');
-        inp.type  = 'hidden';
-        inp.name  = name;
-        form.appendChild(inp);
-      }
-      inp.value = src.value;
-    }
-  });
+
+  document.getElementById('hidden-toEmail').value = document.getElementById('to-field').value;
+  document.getElementById('hidden-ccEmail').value = document.getElementById('cc-field').value;
+  document.getElementById('hidden-bccEmail').value = document.getElementById('bcc-field').value;
+  document.getElementById('hidden-subject').value = document.getElementById('subject-field').value;
+  document.getElementById('hidden-body').value = document.getElementById('mail-body').value;
+
   form.submit();
 }
 
-// Override send button to go through submitForm
 document.getElementById('mail-form').addEventListener('submit', function(e) {
   e.preventDefault();
   submitForm('send');
 });
-
-// Also make inline inputs submit via submitForm on Enter in To/Subject fields
-['to', 'subject'].forEach(id => {
-  const el = document.querySelector(`[name="${id}"]`);
-  if (el) el.addEventListener('keydown', e => {
-    if (e.key === 'Enter') { e.preventDefault(); submitForm('send'); }
-  });
-});
 </script>
+
 </body>
 </html>

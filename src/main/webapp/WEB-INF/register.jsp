@@ -29,19 +29,25 @@
     <h1 class="auth-heading">Create account</h1>
     <p class="auth-sub">Set up your JavaMail inbox in seconds</p>
 
-    <% if (error != null) { %>
+    <%
+      String errorMsg = (String) request.getAttribute("errorMessage");
+    %>
+    <% if (errorMsg != null) { %>
+      <div class="alert alert-error">⚠ <%= errorMsg %></div>
+    <% } else if (error != null) { %>
       <div class="alert alert-error">⚠ <%= error %></div>
     <% } %>
 
-    <form action="<%= request.getContextPath() %>/user/register" method="POST">
+
+    <form action="<%= request.getContextPath() %>/register" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">First Name</label>
-          <input class="form-input" type="text" name="firstname" placeholder="Alice" required autofocus>
+          <input class="form-input" type="text" name="firstName" placeholder="Alice" required autofocus>
         </div>
         <div class="form-group">
           <label class="form-label">Last Name</label>
-          <input class="form-input" type="text" name="lastname" placeholder="Johnson" required>
+          <input class="form-input" type="text" name="lastName" placeholder="Johnson" required>
         </div>
       </div>
 
@@ -72,8 +78,9 @@
     </form>
 
     <div class="auth-footer">
-      Already have an account? <a href="<%= request.getContextPath() %>/login.jsp">Sign in</a>
+      Already have an account? <a href="<%= request.getContextPath() %>/login">Sign in</a>
     </div>
+
   </div>
 
   <!-- ── Right: Visual ─────────────────────────── -->

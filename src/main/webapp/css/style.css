@@ -6,46 +6,98 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 
-/* ── CSS Variables ─────────────────────────────────────── */
+/* ── Dynamic Theme Variables ───────────────────────────── */
 :root {
-  --bg-0:        #0e0f14;
-  --bg-1:        #13141a;
-  --bg-2:        #1a1b24;
-  --bg-3:        #22232f;
-  --bg-hover:    #282937;
-  --border:      #2e2f3e;
-  --border-soft: #1f2030;
+  /* Light mode default */
+  --bg-0:        #f4f5f9;
+  --bg-1:        #ffffff;
+  --bg-2:        #f0f2f7;
+  --bg-3:        #e4e7f0;
+  --bg-hover:    #eaedf5;
+  --border:      #d8dce8;
+  --border-soft: #e8ebf3;
 
-  --text-primary:   #e8e9f0;
-  --text-secondary: #8b8da0;
-  --text-muted:     #555670;
+  --text-primary:   #1a1c23;
+  --text-secondary: #5a5f73;
+  --text-muted:     #8c92a4;
 
-  --accent:      #5b6ef5;
-  --accent-glow: rgba(91,110,245,.18);
-  --accent-dim:  #3e50c8;
-  --green:       #3ecf8e;
-  --amber:       #f5a623;
-  --red:         #f55b5b;
-  --star-color:  #f5c518;
+  --accent:      #4f46e5;
+  --accent-glow: rgba(79, 70, 229, 0.12);
+  --accent-dim:  #4338ca;
+  --green:       #10b981;
+  --amber:       #f59e0b;
+  --red:         #ef4444;
+  --star-color:  #eab308;
 
-  --sidebar-w:   240px;
-  --radius:      10px;
-  --radius-sm:   6px;
-  --shadow:      0 4px 24px rgba(0,0,0,.4);
-  --transition:  0.18s ease;
+  --sidebar-w:   250px;
+  --radius:      12px;
+  --radius-sm:   8px;
+  --shadow:      0 10px 30px -5px rgba(0, 0, 0, 0.08);
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.04);
+  --transition:  0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
   font-size: 14px;
+}
+
+[data-theme="dark"] {
+  --bg-0:        #0d0e12;
+  --bg-1:        #14151c;
+  --bg-2:        #1d1e28;
+  --bg-3:        #262836;
+  --bg-hover:    #2d3042;
+  --border:      #2b2d3d;
+  --border-soft: #202230;
+
+  --text-primary:   #f1f3f9;
+  --text-secondary: #9da3b4;
+  --text-muted:     #63697b;
+
+  --accent:      #6366f1;
+  --accent-glow: rgba(99, 102, 241, 0.18);
+  --accent-dim:  #4f46e5;
+  --green:       #34d399;
+  --amber:       #fbbf24;
+  --red:         #f87171;
+  --star-color:  #facc15;
+  --shadow:      0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Theme Switcher Button Style ────────────────────────── */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 20px;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  margin-top: 4px;
+}
+.theme-toggle-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+.theme-toggle-icon {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-0);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition), color var(--transition);
 }
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
