@@ -1,33 +1,67 @@
 package com.javamail.model;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Mail - Represents an email message in the JavaMail system.
+ * Annotated as a Spring Data JPA Entity.
  */
+@Entity
+@Table(name = "mails")
 public class Mail {
 
     public enum Status { SENT, DRAFT, DELETED, SPAM }
 
-    private int       id;
-    private String    fromEmail;
-    private String    toEmail;
-    private String    ccEmail;
-    private String    bccEmail;
-    private String    subject;
-    private String    body;
-    private Status    status;
-    private boolean   isRead;
-    private boolean   isStarred;
-    private boolean   isImportant;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "from_email", nullable = false, length = 150)
+    private String fromEmail;
+
+    @Column(name = "to_email", nullable = false, length = 150)
+    private String toEmail;
+
+    @Column(name = "cc_email", length = 500)
+    private String ccEmail = "";
+
+    @Column(name = "bcc_email", length = 500)
+    private String bccEmail = "";
+
+    @Column(nullable = false, length = 300)
+    private String subject;
+
+    @Column(columnDefinition = "TEXT")
+    private String body;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private Status status = Status.SENT;
+
+    @Column(name = "is_read")
+    private boolean isRead = false;
+
+    @Column(name = "is_starred")
+    private boolean isStarred = false;
+
+    @Column(name = "is_important")
+    private boolean isImportant = false;
+
+    @CreationTimestamp
+    @Column(name = "sent_at", updatable = false)
     private Timestamp sentAt;
 
-    // Optional: sender display name (joined from users)
-    private String    fromUsername;
+    @Transient
+    private String fromUsername;
 
-    // Attachments list (optional)
-    private List<Attachment> attachments;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "mail_id")
+    private List<Attachment> attachments = new ArrayList<>();
 
     public Mail() {}
 
@@ -83,3 +117,4 @@ public class Mail {
         return sdf.format(sentAt);
     }
 }
+

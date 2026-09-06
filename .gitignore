@@ -1,0 +1,14 @@
+# Maven build output
+target/
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+
+# Tomcat temporary dirs
+.tomcat-base/
+.tomcat-home/

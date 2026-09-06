@@ -1,20 +1,50 @@
 package com.javamail.model;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.sql.Timestamp;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * User - Represents a registered user in the JavaMail system.
+ * Annotated as a Spring Data JPA Entity and implements Spring Security UserDetails.
  */
-public class User {
+@Entity
+@Table(name = "users")
+public class User implements UserDetails {
 
-    private int       id;
-    private String    username;
-    private String    email;
-    private String    password;
-    private String    dob;
-    private String    contact;
-    private String    profilePic;
-    private boolean   isActive;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false, length = 100)
+    private String username;
+
+    @Column(nullable = false, unique = true, length = 150)
+    private String email;
+
+    @Column(nullable = false, length = 255)
+    private String password;
+
+    @Column(name = "dob")
+    private String dob;
+
+    @Column(length = 15)
+    private String contact;
+
+    @Column(name = "profile_pic", length = 255)
+    private String profilePic = "default.png";
+
+    @Column(name = "is_active")
+    private boolean isActive = true;
+
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;
 
     public User() {}
@@ -51,8 +81,27 @@ public class User {
     public void setActive(boolean active)      { this.isActive = active; }
     public void setCreatedAt(Timestamp ts)     { this.createdAt = ts; }
 
+    // ── Spring Security UserDetails Implementation ──────
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public boolean isAccountNonExpired() { return true; }
+
+    @Override
+    public boolean isAccountNonLocked() { return isActive; }
+
+    @Override
+    public boolean isCredentialsNonExpired() { return true; }
+
+    @Override
+    public boolean isEnabled() { return isActive; }
+
     @Override
     public String toString() {
         return "User{id=" + id + ", email='" + email + "', username='" + username + "'}";
     }
 }
+

@@ -1,15 +1,32 @@
 package com.javamail.model;
 
+import jakarta.persistence.*;
+
 /**
  * Attachment - Represents a file attached to a mail.
+ * Annotated as a Spring Data JPA Entity.
  */
+@Entity
+@Table(name = "attachments")
 public class Attachment {
 
-    private int    id;
-    private int    mailId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "mail_id")
+    private int mailId;
+
+    @Column(name = "file_name", nullable = false, length = 255)
     private String fileName;
+
+    @Column(name = "file_path", nullable = false, length = 500)
     private String filePath;
-    private long   fileSize;
+
+    @Column(name = "file_size")
+    private long fileSize = 0;
+
+    @Column(name = "mime_type", length = 100)
     private String mimeType;
 
     public Attachment() {}
@@ -36,3 +53,4 @@ public class Attachment {
         return String.format("%.1f MB", fileSize / (1024.0 * 1024));
     }
 }
+
