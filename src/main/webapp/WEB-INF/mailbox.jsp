@@ -73,6 +73,7 @@
         <input type="text" name="q" placeholder="Search mails…"
                value="<%= query != null ? query : "" %>"
                onkeypress="submitSearch(event)">
+        <button type="submit" class="search-submit" title="Search mails">Search</button>
       </form>
 
       <div class="topbar-actions">
