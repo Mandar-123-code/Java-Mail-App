@@ -16,7 +16,7 @@
   <groupId>com.javamail</groupId>
   <artifactId>JavaMailApp</artifactId>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>JavaMail Application</name>
   <description>Full-featured Java Mail Application built with Spring Boot, Spring MVC, Spring Data JPA, REST APIs, and Spring Security</description>

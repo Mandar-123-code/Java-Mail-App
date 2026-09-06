@@ -9,6 +9,6 @@ RUN mvn clean package -DskipTests -q
 # Stage 2: Run Spring Boot application
 FROM eclipse-temurin:25-jre-alpine
 WORKDIR /app
-COPY --from=build /app/target/JavaMailApp.jar app.jar
+COPY --from=build /app/target/JavaMailApp.war app.war
 EXPOSE 8081
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.war"]
