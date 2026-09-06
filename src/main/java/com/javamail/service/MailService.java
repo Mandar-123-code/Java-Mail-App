@@ -29,7 +29,8 @@ public class MailService {
 
     public List<Mail> getMailsByFolder(String email, String folder) {
         List<Mail> mails;
-        if (folder == null) folder = "inbox";
+        if (folder == null)
+            folder = "inbox";
 
         switch (folder.toLowerCase()) {
             case "sent":
@@ -49,7 +50,7 @@ public class MailService {
                 mails = mailRepository.findTrashMails(email);
                 break;
             case "spam":
-                mails = mailRepository.findByToEmailAndStatusOrderBySentAtDesc(email, Status.SPAM);
+                mails = mailRepository.findSpamMails(email);
                 break;
             case "inbox":
             default:
@@ -76,7 +77,8 @@ public class MailService {
     }
 
     @Transactional
-    public Mail sendMail(String fromEmail, String toEmail, String ccEmail, String bccEmail, String subject, String body) {
+    public Mail sendMail(String fromEmail, String toEmail, String ccEmail, String bccEmail, String subject,
+            String body) {
         Mail mail = new Mail(fromEmail, toEmail, subject, body, Status.SENT);
         mail.setCcEmail(ccEmail != null ? ccEmail : "");
         mail.setBccEmail(bccEmail != null ? bccEmail : "");
@@ -84,7 +86,8 @@ public class MailService {
     }
 
     @Transactional
-    public Mail saveDraft(String fromEmail, String toEmail, String ccEmail, String bccEmail, String subject, String body, Integer existingMailId) {
+    public Mail saveDraft(String fromEmail, String toEmail, String ccEmail, String bccEmail, String subject,
+            String body, Integer existingMailId) {
         Mail mail;
         if (existingMailId != null && existingMailId > 0) {
             Optional<Mail> optMail = mailRepository.findById(existingMailId);
@@ -211,6 +214,7 @@ public class MailService {
         counts.put("drafts", mailRepository.countByFromEmailAndStatus(email, Status.DRAFT));
         counts.put("starred", mailRepository.countStarredMails(email));
         counts.put("important", mailRepository.countImportantMails(email));
+        counts.put("spam", mailRepository.countSpamMails(email));
         counts.put("trash", mailRepository.countTrashMails(email));
         counts.put("unread", getUnreadCount(email));
         return counts;

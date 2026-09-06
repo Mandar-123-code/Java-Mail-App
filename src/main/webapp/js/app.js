@@ -40,14 +40,85 @@ const Toast = {
   },
 };
 
-// ── Auto-dismiss flash alerts ─────────────────────────────
+// ── Shared modal dialogs ──────────────────────────────────
+const Modal = {
+  queue: [],
+  active: false,
+
+  show(
+    message,
+    {
+      title = "Please confirm",
+      type = "confirm",
+      confirmText = "Continue",
+    } = {},
+  ) {
+    return new Promise((resolve) => {
+      this.queue.push({ message, title, type, confirmText, resolve });
+      this.next();
+    });
+  },
+
+  next() {
+    if (this.active || this.queue.length === 0) return;
+    this.active = true;
+    const { message, title, type, confirmText, resolve } = this.queue.shift();
+    const overlay = document.createElement("div");
+    overlay.className = "modal-overlay";
+    overlay.innerHTML = `
+      <section class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" type="button" aria-label="Close">×</button>
+        <div class="modal-icon modal-icon-${type}">${type === "danger" ? "!" : "?"}</div>
+        <h2 id="modal-title">${title}</h2>
+        <p class="modal-message"></p>
+        <div class="modal-actions">
+          <button class="btn btn-secondary modal-cancel" type="button">Cancel</button>
+          <button class="btn ${type === "danger" ? "btn-danger" : "btn-primary"} modal-confirm" type="button">${confirmText}</button>
+        </div>
+      </section>`;
+    overlay.querySelector(".modal-message").textContent = message;
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => overlay.classList.add("is-visible"));
+
+    const finish = (confirmed) => {
+      overlay.classList.remove("is-visible");
+      setTimeout(() => {
+        overlay.remove();
+        this.active = false;
+        resolve(confirmed);
+        this.next();
+      }, 180);
+    };
+    overlay
+      .querySelector(".modal-confirm")
+      .addEventListener("click", () => finish(true));
+    overlay
+      .querySelector(".modal-cancel")
+      .addEventListener("click", () => finish(false));
+    overlay
+      .querySelector(".modal-close")
+      .addEventListener("click", () => finish(false));
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) finish(false);
+    });
+    overlay.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") finish(false);
+    });
+    overlay.querySelector(".modal-confirm").focus();
+  },
+};
+
+// Convert every server flash alert to the same modal presentation.
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".alert").forEach((alert) => {
-    setTimeout(() => {
-      alert.style.opacity = "0";
-      alert.style.transition = "0.4s ease";
-      setTimeout(() => alert.remove(), 400);
-    }, 4000);
+    const isError = alert.classList.contains("alert-error");
+    const message = alert.textContent.replace(/^[\s⚠✓]+/, "").trim();
+    alert.remove();
+    Modal.show(message, {
+      title: isError ? "Something went wrong" : "Done",
+      type: isError ? "danger" : "success",
+      confirmText: "Close",
+    });
   });
 });
 
@@ -108,13 +179,22 @@ function toggleImportant(btn, mailId) {
 
 // ── Confirm delete ────────────────────────────────────────
 function confirmDelete(mailId, redirect) {
-  if (!confirm("Move this mail to Trash?")) return;
-  submitAction("/mail/delete", { mailId, redirect });
+  Modal.show("This mail will be moved to Trash.", {
+    title: "Move to Trash?",
+    type: "danger",
+    confirmText: "Move mail",
+  }).then((confirmed) => {
+    if (confirmed) submitAction("/mail/delete", { mailId, redirect });
+  });
 }
 
 function confirmEmptyTrash() {
-  if (!confirm("Permanently delete all trash? This cannot be undone.")) return;
-  submitAction("/mail/empty-trash", {});
+  Modal.show(
+    "All messages in Trash will be permanently deleted. This cannot be undone.",
+    { title: "Empty Trash?", type: "danger", confirmText: "Empty Trash" },
+  ).then((confirmed) => {
+    if (confirmed) submitAction("/mail/empty-trash", {});
+  });
 }
 
 function submitAction(path, data) {
@@ -185,7 +265,8 @@ function initTheme() {
   const toggleBtn = document.getElementById("theme-toggle-btn");
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
-      const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+      const currentTheme =
+        document.documentElement.getAttribute("data-theme") || "light";
       const newTheme = currentTheme === "dark" ? "light" : "dark";
       applyTheme(newTheme);
       localStorage.setItem("javamail-theme", newTheme);
@@ -199,7 +280,7 @@ function applyTheme(theme) {
   } else {
     document.documentElement.removeAttribute("data-theme");
   }
-  
+
   const iconEl = document.getElementById("theme-toggle-icon");
   const textEl = document.getElementById("theme-toggle-text");
   if (iconEl && textEl) {

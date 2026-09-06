@@ -218,25 +218,24 @@
 // Bulk action helper
 function bulkAction(action) {
   if (selectedMails.size === 0) return;
-  if (!confirm(`Apply "${action}" to ${selectedMails.size} mail(s)?`)) return;
-  const ids = Array.from(selectedMails);
-  ids.forEach(id => {
-    fetch(`${contextPath}/mail/${action}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `mailId=${id}&redirect=<%= folder %>`
+  const count = selectedMails.size;
+  const title = action === 'spam' ? 'Move to Spam?' : `Apply ${action}?`;
+  const message = action === 'spam'
+    ? `${count} selected mail(s) will be moved to Spam.`
+    : `Apply "${action}" to ${count} selected mail(s)?`;
+  Modal.show(message, { title, type: action === 'delete' || action === 'spam' ? 'danger' : 'confirm', confirmText: 'Continue' })
+    .then(async (confirmed) => {
+      if (!confirmed) return;
+      const requests = Array.from(selectedMails).map(id => fetch(`${contextPath}/mail/${action}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `mailId=${id}&redirect=<%= folder %>`
+      }));
+      await Promise.all(requests);
+      location.reload();
     });
-  });
-  setTimeout(() => location.reload(), 600);
 }
 
-// Show flash toasts
-<% if (success != null) { %>
-  document.addEventListener('DOMContentLoaded', () => Toast.success("<%= success %>"));
-<% } %>
-<% if (error != null) { %>
-  document.addEventListener('DOMContentLoaded', () => Toast.error("<%= error %>"));
-<% } %>
 </script>
 
 </body>

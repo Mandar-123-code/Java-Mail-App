@@ -75,7 +75,8 @@
     <div class="auth-visual-glow"></div>
     <div class="auth-visual-title">Your inbox,<br>reimagined.</div>
     <div class="auth-visual-sub">
-      A fast, powerful email client built entirely in Java — with a clean interface, full JDBC persistence, and every feature you need.
+      A fast, powerful email client built entirely on <strong>Spring Boot</strong> — with a clean
+      interface, JPA/Hibernate persistence, and every feature you need.
     </div>
     <div class="auth-features">
       <div class="auth-feature">
@@ -88,15 +89,16 @@
       <div class="auth-feature">
         <div class="auth-feature-icon">⚡</div>
         <div class="auth-feature-text">
-          <strong>JDBC Backed</strong>
-          All data persisted to PostgreSQL via PreparedStatements — fully production-ready
+          <strong>Spring Data JPA</strong>
+          All data persisted to PostgreSQL via Hibernate ORM — fully production-ready
         </div>
       </div>
       <div class="auth-feature">
         <div class="auth-feature-icon">🔒</div>
         <div class="auth-feature-text">
           <strong>Secure Auth</strong>
-          SHA-256 hashed passwords and session management built in
+          <strong>Secure Auth</strong>
+          BCrypt hashed passwords + Spring Security session management built in
         </div>
       </div>
     </div>

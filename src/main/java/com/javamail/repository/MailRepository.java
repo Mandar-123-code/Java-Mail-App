@@ -30,6 +30,10 @@ public interface MailRepository extends JpaRepository<Mail, Integer> {
     @Query("SELECT m FROM Mail m WHERE (m.toEmail = :email OR m.fromEmail = :email) AND m.status = com.javamail.model.Mail.Status.DELETED ORDER BY m.sentAt DESC")
     List<Mail> findTrashMails(@Param("email") String email);
 
+    // Spam mails
+    @Query("SELECT m FROM Mail m WHERE (m.toEmail = :email OR m.fromEmail = :email) AND m.status = com.javamail.model.Mail.Status.SPAM ORDER BY m.sentAt DESC")
+    List<Mail> findSpamMails(@Param("email") String email);
+
     // Search mails
     @Query("SELECT m FROM Mail m WHERE (m.toEmail = :email OR m.fromEmail = :email) AND (LOWER(m.subject) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(m.body) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(m.fromEmail) LIKE LOWER(CONCAT('%', :query, '%'))) ORDER BY m.sentAt DESC")
     List<Mail> searchMails(@Param("email") String email, @Param("query") String query);
@@ -39,6 +43,7 @@ public interface MailRepository extends JpaRepository<Mail, Integer> {
 
     // Count by folder
     long countByToEmailAndStatus(String toEmail, Status status);
+
     long countByFromEmailAndStatus(String fromEmail, Status status);
 
     @Query("SELECT COUNT(m) FROM Mail m WHERE (m.toEmail = :email OR m.fromEmail = :email) AND m.isStarred = true AND m.status != 'DELETED'")
@@ -49,4 +54,7 @@ public interface MailRepository extends JpaRepository<Mail, Integer> {
 
     @Query("SELECT COUNT(m) FROM Mail m WHERE (m.toEmail = :email OR m.fromEmail = :email) AND m.status = com.javamail.model.Mail.Status.DELETED")
     long countTrashMails(@Param("email") String email);
+
+    @Query("SELECT COUNT(m) FROM Mail m WHERE (m.toEmail = :email OR m.fromEmail = :email) AND m.status = com.javamail.model.Mail.Status.SPAM")
+    long countSpamMails(@Param("email") String email);
 }
