@@ -5,10 +5,14 @@
     if (currUser == null) { response.sendRedirect(request.getContextPath() + "/login.jsp"); return; }
 
     String ctx     = request.getContextPath();
-    String success = (String) session.getAttribute("success");
-    String error   = (String) session.getAttribute("error");
-    session.removeAttribute("success");
-    session.removeAttribute("error");
+    // Flash attributes from Spring MVC RedirectAttributes land as request/model attributes
+    String success = (String) request.getAttribute("successMessage");
+    String error   = (String) request.getAttribute("errorMessage");
+    // Fallback: also check session (legacy)
+    if (success == null) success = (String) session.getAttribute("successMessage");
+    if (error   == null) error   = (String) session.getAttribute("errorMessage");
+    session.removeAttribute("successMessage");
+    session.removeAttribute("errorMessage");
 %>
 <!DOCTYPE html>
 <html lang="en">

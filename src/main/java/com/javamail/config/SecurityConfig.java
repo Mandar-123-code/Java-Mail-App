@@ -61,6 +61,30 @@ public class SecurityConfig {
                 .permitAll()
             );
 
+        // Allow GET /user/logout as an alias for Spring Security logout
+        // (sidebar and profile page use this anchor href)
+        http.addFilterBefore(
+            new org.springframework.web.filter.OncePerRequestFilter() {
+                @Override
+                protected void doFilterInternal(jakarta.servlet.http.HttpServletRequest req,
+                                                jakarta.servlet.http.HttpServletResponse res,
+                                                jakarta.servlet.FilterChain chain)
+                        throws jakarta.servlet.ServletException, java.io.IOException {
+                    if (("GET".equalsIgnoreCase(req.getMethod()) || "POST".equalsIgnoreCase(req.getMethod()))
+                            && req.getRequestURI().endsWith("/user/logout")) {
+                        // Invalidate session and redirect to login
+                        jakarta.servlet.http.HttpSession session = req.getSession(false);
+                        if (session != null) session.invalidate();
+                        org.springframework.security.core.context.SecurityContextHolder.clearContext();
+                        res.sendRedirect(req.getContextPath() + "/login?logout=true");
+                        return;
+                    }
+                    chain.doFilter(req, res);
+                }
+            },
+            org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class
+        );
+
         return http.build();
     }
 }

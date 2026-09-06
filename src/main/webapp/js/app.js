@@ -87,7 +87,7 @@ function toggleStar(btn, mailId) {
   fetch(`${contextPath}/mail/star`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `mailId=${mailId}&redirect=inbox`,
+    body: `id=${mailId}`,
   }).catch(() => {
     btn.classList.toggle("starred"); // rollback if error
   });
@@ -100,7 +100,7 @@ function toggleImportant(btn, mailId) {
   fetch(`${contextPath}/mail/important`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `mailId=${mailId}&redirect=inbox`,
+    body: `id=${mailId}`,
   }).catch(() => {
     btn.classList.toggle("important"); // rollback
   });

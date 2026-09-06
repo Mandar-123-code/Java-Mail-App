@@ -173,6 +173,24 @@ public class MailService {
         return false;
     }
 
+    @Transactional
+    public boolean moveToSpam(int id) {
+        Optional<Mail> mail = mailRepository.findById(id);
+        if (mail.isPresent()) {
+            Mail m = mail.get();
+            m.setStatus(Status.SPAM);
+            mailRepository.save(m);
+            return true;
+        }
+        return false;
+    }
+
+    @Transactional
+    public void emptyTrash(String email) {
+        List<Mail> trashMails = mailRepository.findTrashMails(email);
+        mailRepository.deleteAll(trashMails);
+    }
+
     public List<Mail> searchMails(String email, String query) {
         List<Mail> mails = mailRepository.searchMails(email, query);
         for (Mail m : mails) {

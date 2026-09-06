@@ -206,23 +206,73 @@ public class MailViewController {
     }
 
 
+    @PostMapping("/mail/delete")
+    public String deletePost(@RequestParam(value = "id", required = false) Integer id,
+                             @RequestParam(value = "mailId", required = false) Integer mailId,
+                             @RequestParam(value = "redirect", required = false, defaultValue = "inbox") String folder,
+                             RedirectAttributes redirectAttributes) {
+        int resolvedId = id != null ? id : (mailId != null ? mailId : 0);
+        if (resolvedId > 0) {
+            mailService.moveToTrash(resolvedId);
+            redirectAttributes.addFlashAttribute("successMessage", "Mail moved to trash.");
+        }
+        return "redirect:/mailbox?folder=" + folder;
+    }
+
+    @PostMapping("/mail/spam")
+    public String spamPost(@RequestParam(value = "id", required = false) Integer id,
+                           @RequestParam(value = "mailId", required = false) Integer mailId,
+                           @RequestParam(value = "redirect", required = false, defaultValue = "inbox") String folder,
+                           RedirectAttributes redirectAttributes) {
+        int resolvedId = id != null ? id : (mailId != null ? mailId : 0);
+        if (resolvedId > 0) {
+            mailService.moveToSpam(resolvedId);
+            redirectAttributes.addFlashAttribute("successMessage", "Mail marked as spam.");
+        }
+        return "redirect:/mailbox?folder=" + folder;
+    }
+
     @PostMapping("/mail/star")
-    public String toggleStarPost(@RequestParam("id") int id, RedirectAttributes redirectAttributes) {
-        mailService.toggleStar(id);
-        return "redirect:/viewmail?id=" + id;
+    public String toggleStarPost(@RequestParam(value = "id", required = false) Integer id,
+                                 @RequestParam(value = "mailId", required = false) Integer mailId,
+                                 @RequestParam(value = "redirect", required = false, defaultValue = "inbox") String folder,
+                                 RedirectAttributes redirectAttributes) {
+        int resolvedId = id != null ? id : (mailId != null ? mailId : 0);
+        if (resolvedId > 0) mailService.toggleStar(resolvedId);
+        return "redirect:/viewmail?id=" + resolvedId;
     }
 
     @PostMapping("/mail/important")
-    public String toggleImportantPost(@RequestParam("id") int id, RedirectAttributes redirectAttributes) {
-        mailService.toggleImportant(id);
-        return "redirect:/viewmail?id=" + id;
+    public String toggleImportantPost(@RequestParam(value = "id", required = false) Integer id,
+                                      @RequestParam(value = "mailId", required = false) Integer mailId,
+                                      @RequestParam(value = "redirect", required = false, defaultValue = "inbox") String folder,
+                                      RedirectAttributes redirectAttributes) {
+        int resolvedId = id != null ? id : (mailId != null ? mailId : 0);
+        if (resolvedId > 0) mailService.toggleImportant(resolvedId);
+        return "redirect:/viewmail?id=" + resolvedId;
     }
 
     @PostMapping("/mail/restore")
-    public String restorePost(@RequestParam("id") int id, RedirectAttributes redirectAttributes) {
-        mailService.restoreFromTrash(id);
-        redirectAttributes.addFlashAttribute("successMessage", "Mail restored to inbox.");
+    public String restorePost(@RequestParam(value = "id", required = false) Integer id,
+                              @RequestParam(value = "mailId", required = false) Integer mailId,
+                              RedirectAttributes redirectAttributes) {
+        int resolvedId = id != null ? id : (mailId != null ? mailId : 0);
+        if (resolvedId > 0) {
+            mailService.restoreFromTrash(resolvedId);
+            redirectAttributes.addFlashAttribute("successMessage", "Mail restored to inbox.");
+        }
         return "redirect:/mailbox?folder=inbox";
+    }
+
+    @PostMapping("/mail/empty-trash")
+    public String emptyTrash(@AuthenticationPrincipal User principal,
+                             HttpSession session,
+                             RedirectAttributes redirectAttributes) {
+        User user = getAuthenticatedUser(principal, session);
+        if (user == null) return "redirect:/login";
+        mailService.emptyTrash(user.getEmail());
+        redirectAttributes.addFlashAttribute("successMessage", "Trash emptied.");
+        return "redirect:/mailbox?folder=trash";
     }
 
     @GetMapping({"/profile", "/user/profile"})
