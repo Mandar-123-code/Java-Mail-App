@@ -83,14 +83,14 @@ mvn spring-boot:run
 
 The application starts on [http://localhost:8081](http://localhost:8081). The root route redirects to the login page, and authenticated users are redirected to the mailbox.
 
-## Build and Run the JAR
+## Build and Run the WAR
 
 ```bash
 mvn clean package
-java -jar target/JavaMailApp.jar
+java -jar target/JavaMailApp.war
 ```
 
-This is an executable Spring Boot JAR and does not need to be deployed to an external Tomcat server.
+This is an executable Spring Boot WAR. The WAR packaging is required because the application uses JSP views.
 
 ## Docker
 
