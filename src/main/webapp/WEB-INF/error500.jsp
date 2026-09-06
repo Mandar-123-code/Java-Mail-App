@@ -11,6 +11,7 @@
 <head>
   <meta charset="UTF-8">
   <title><%= statusCode %> — JavaMail</title>
+  <link rel="icon" type="image/svg+xml" href="<%= request.getContextPath() %>/images/favicon.svg">
   <link rel="stylesheet" href="<%= ctx %>/css/style.css">
 </head>
 <body style="display:flex;align-items:center;justify-content:center;min-height:100vh;flex-direction:column;gap:20px;text-align:center;padding:20px;">

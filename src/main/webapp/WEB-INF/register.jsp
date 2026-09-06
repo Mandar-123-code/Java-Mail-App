@@ -13,6 +13,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaMail — Create Account</title>
+  <link rel="icon" type="image/svg+xml" href="<%= request.getContextPath() %>/images/favicon.svg">
   <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
 </head>
 <body>
