@@ -1154,10 +1154,11 @@ select {
 }
 .search-bar {
   width: 100%;
-  max-width: 560px;
+  max-width: 660px;
   display: flex;
   align-items: center;
   gap: 8px;
+  overflow: visible;
 }
 .search-bar input {
   flex: 1 1 auto;
@@ -1186,6 +1187,13 @@ select {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  width: 84px;
+  min-width: 84px;
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+  z-index: 2;
+  appearance: none;
   height: 42px;
   padding: 0 16px;
   border-radius: 11px;
